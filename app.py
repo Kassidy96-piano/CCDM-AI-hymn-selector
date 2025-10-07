@@ -15,7 +15,9 @@ from fuzzywuzzy import fuzz
 df = pd.read_excel("CCDM Song selection 2025.xlsx")
 
 # Load spaCy NLP model
-nlp = spacy.load("en_core_web_sm")
+
+nlp = spacy.load("en_core_web_sm")  # Streamlit Cloud will handle installation
+
 
 # Extract themes
 def extract_themes(text):
