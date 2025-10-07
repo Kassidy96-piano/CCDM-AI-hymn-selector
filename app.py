@@ -6,8 +6,7 @@ download("en_core_web_sm")
 
 # Load the model so we can use it
 nlp = spacy.load("en_core_web_sm")
-import streamlit 
-as st
+import streamlit as st
 import pandas as pd
 import spacy
 from fuzzywuzzy import fuzz
