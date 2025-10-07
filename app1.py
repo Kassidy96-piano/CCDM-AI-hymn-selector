@@ -2,9 +2,18 @@ import streamlit as st
 import pandas as pd
 import spacy
 from fuzzywuzzy import fuzz
+import subprocess
+import sys
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+# Load spaCy model (install if missing)
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.check_call([
+        sys.executable, "-m", "pip", "install",
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
+    ])
+    nlp = spacy.load("en_core_web_sm")
 
 # Load Excel file with hymns
 df = pd.read_excel("CCDM Song Selection 2025.xlsx")
